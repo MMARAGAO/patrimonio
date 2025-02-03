@@ -42,7 +42,7 @@ export default function Home() {
     try {
       await addDoc(collection(db, "data"), formData);
       setMessage("Dados salvos com sucesso!");
-      // eperar 2 segundos e limpar a mensagem
+      // eperar 2 segundos e limpar a mensage
       setTimeout(() => {
         setMessage(null);
       }, 2000);
