@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { db } from "../../firebaseConfig";
 import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
+import * as XLSX from "xlsx";
 
 import {
   Table,
@@ -50,8 +51,17 @@ export default function Docs() {
     }
   };
 
+  const handleExport = () => {
+    const exportData = data.map(({ id, ...rest }) => rest);
+    const worksheet = XLSX.utils.json_to_sheet(exportData);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Data");
+    XLSX.writeFile(workbook, "data.xlsx");
+  };
+
   return (
     <div>
+      <button onClick={handleExport}>Exportar para Excel</button>
       <Table aria-label="Example static collection table">
         <TableHeader>
           <TableColumn>Predio</TableColumn>
