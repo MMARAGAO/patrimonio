@@ -42,7 +42,6 @@ export default function Home() {
     try {
       await addDoc(collection(db, "data"), formData);
       setMessage("Dados salvos com sucesso!");
-      clearForm();
     } catch (e) {
       console.error("Error adding document: ", e);
       setMessage("Erro ao salvar os dados.");
