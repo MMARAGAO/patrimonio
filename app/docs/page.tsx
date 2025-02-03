@@ -61,7 +61,9 @@ export default function Docs() {
 
   return (
     <div>
-      <button onClick={handleExport}>Exportar para Excel</button>
+      <button onClick={handleExport} className="m-4">
+        Exportar para Excel
+      </button>
       <Table aria-label="Example static collection table">
         <TableHeader>
           <TableColumn>Predio</TableColumn>
